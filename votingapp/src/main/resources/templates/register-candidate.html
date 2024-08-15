@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Register Candidate</title>
+</head>
+<body>
+<h1>Register New Candidate</h1>
+<form th:action="@{/candidates/register}" method="post">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required/><br/>
+
+    <label for="party">Party:</label>
+    <input type="text" id="party" name="party" required/><br/>
+
+    <label for="election">Election:</label>
+    <select id="election" name="electionId" required>
+        <option th:each="election : ${elections}" th:value="${election.id}" th:text="${election.name}">Election</option>
+    </select><br/>
+
+    <button type="submit">Register Candidate</button>
+</form>
+</body>
+</html>

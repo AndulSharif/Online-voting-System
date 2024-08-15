@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Candidate List</title>
+</head>
+<body>
+<h1>Candidate List</h1>
+<ul>
+    <li th:each="candidate : ${candidates}">
+        <span th:text="${candidate.name}">Candidate Name</span> -
+        <span th:text="${candidate.party}">Party</span>
+        <form th:action="@{/vote}" method="post">
+            <input type="hidden" name="candidateId" th:value="${candidate.id}"/>
+            <button type="submit">Vote</button>
+        </form>
+    </li>
+</ul>
+</body>
+</html>
